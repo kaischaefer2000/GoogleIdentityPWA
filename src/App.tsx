@@ -1,7 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import * as d3 from "d3";
 import BasicTable from "./Table";
 import Button from "@mui/material/Button";
 
