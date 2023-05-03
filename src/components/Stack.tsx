@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 export default function BasicStack({ devices }: any) {
   console.log(devices);
   return (
-    <div style={{ padding: "50px" }}>
+    <div style={{ padding: devices[0] ? "50px" : undefined }}>
       {devices[0]
         ? devices.map((device: any, index: number) => (
             <div>

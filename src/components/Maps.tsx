@@ -1,5 +1,5 @@
 import React from "react";
-import BasicTable from "./Table";
+import BasicTable from "./TableMaps";
 import Button from "@mui/material/Button";
 
 function Maps() {

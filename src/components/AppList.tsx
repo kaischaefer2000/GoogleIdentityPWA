@@ -2,6 +2,7 @@ import React from "react";
 import BasicTable from "./TableMaps";
 import Button from "@mui/material/Button";
 import BasicStack from "./Stack";
+import TableApps from "./TableApps";
 
 const relevantKeys = [
   "sync_user_agent",
@@ -12,9 +13,14 @@ const relevantKeys = [
   "model",
 ];
 
-function DeviceInfo() {
+interface App {
+  title: string;
+  firstInstallationTime: string;
+}
+
+function AppList() {
   const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
-  const [deviceInfos, setDeviceInfos] = React.useState({});
+  const [appList, setAppList] = React.useState<App[]>([]);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -24,21 +30,26 @@ function DeviceInfo() {
 
   const handleFileRead = (e: ProgressEvent<FileReader>) => {
     const contentRaw = JSON.parse(e.target?.result as string);
-    const content = contentRaw["Device Info"];
+    const filteredContent: App[] = contentRaw.map((appInstall: any) => {
+      const title = appInstall.install.doc.title;
+      const firstInstallationTime = appInstall.install.firstInstallationTime;
 
-    content.forEach((obj: any) => {
-      for (const key in obj) {
-        if (!relevantKeys.includes(key)) {
-          delete obj[key];
-        }
-        if (key === "sync_user_agent") {
-          obj[key] = obj[key]
-            .replace(/[^a-zA-Z\s]/g, "")
-            .replace(/channelstable/gi, "");
-        }
-      }
+      return { title, firstInstallationTime };
     });
-    setDeviceInfos(content);
+
+    filteredContent.sort(
+      (a: App, b: App) =>
+        new Date(b.firstInstallationTime).getTime() -
+        new Date(a.firstInstallationTime).getTime()
+    );
+
+    const formattedItems = filteredContent.map((item: App) => {
+      const firstInstallationTime = new Date(
+        item.firstInstallationTime
+      ).toLocaleDateString();
+      return { ...item, firstInstallationTime };
+    });
+    setAppList(formattedItems);
   };
 
   const handleUpload = () => {
@@ -52,10 +63,10 @@ function DeviceInfo() {
   return (
     <div style={{ marginBottom: "50px" }}>
       <div style={{ padding: "50px", background: "lightgrey" }}>
-        <h2>Upload the HTML file: 'Device Information'</h2>
+        <h2>Upload the JSON file: 'Installs'</h2>
         <p>
-          <b>Path:</b> takeout-20230331T124008Z-001\Takeout\Chrome\Device
-          Information.json
+          <b>Path:</b> takeout-20230331T124008Z-001\\Takeout\Google Play Store\
+          Installs.json
         </p>
         <div style={{ display: "flex", alignItems: "center" }}>
           <input type='file' accept='.json' onChange={handleFileUpload} />
@@ -69,9 +80,9 @@ function DeviceInfo() {
         </div>
       </div>
 
-      {deviceInfos ? <BasicStack devices={deviceInfos} /> : null}
+      {appList.length > 0 ? <TableApps apps={appList} /> : null}
     </div>
   );
 }
 
-export default DeviceInfo;
+export default AppList;
