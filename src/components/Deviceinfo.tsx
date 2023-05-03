@@ -1,5 +1,4 @@
 import React from "react";
-import BasicTable from "./TableMaps";
 import Button from "@mui/material/Button";
 import BasicStack from "./Stack";
 

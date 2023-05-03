@@ -1,5 +1,3 @@
-import Typography from "@mui/material/Typography";
-
 export default function BasicStack({ devices }: any) {
   console.log(devices);
   return (

@@ -1,17 +1,6 @@
 import React from "react";
-import BasicTable from "./TableMaps";
 import Button from "@mui/material/Button";
-import BasicStack from "./Stack";
 import TableApps from "./TableApps";
-
-const relevantKeys = [
-  "sync_user_agent",
-  "device_type",
-  "manufacturer",
-  "device_form_factor",
-  "os_type",
-  "model",
-];
 
 interface App {
   title: string;
