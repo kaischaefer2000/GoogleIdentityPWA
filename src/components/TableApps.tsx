@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 export default function TableApps({ apps }: any) {
   return (
     <div
-      style={{ paddingLeft: "50px", paddingRight: "50px", marginTop: "20px" }}
+      style={{ marginTop: "20px" }}
     >
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label='simple table'>
@@ -19,13 +19,13 @@ export default function TableApps({ apps }: any) {
                 <b>Name</b>
               </TableCell>
               <TableCell align='left'>
-                <b>Datum der Installation</b>
+                <b>Date of install</b>
               </TableCell>
               <TableCell align='left'>
-                <b>Kategorie</b>
+                <b>Category</b>
               </TableCell>
               <TableCell align='right'>
-                <b>Preis</b>
+                <b>Price</b>
               </TableCell>
             </TableRow>
           </TableHead>

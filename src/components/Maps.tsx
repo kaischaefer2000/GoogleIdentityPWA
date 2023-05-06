@@ -141,8 +141,8 @@ function Maps() {
 
   return (
     <div style={{ marginBottom: "50px" }}>
-      <div style={{ padding: "50px", background: "lightgrey" }}>
-        <h2>Upload the HTML file: 'MeineAktivitäten Maps'</h2>
+      <div style={{ padding: "20px 30px", background: "lightgrey" }}>
+        <h2>Google Maps Data</h2>
         <p>
           <b>Path:</b> takeout-20230331T124008Z-001\Takeout\Meine
           Aktivitäten\Maps\MeineAktivitäten Maps.html

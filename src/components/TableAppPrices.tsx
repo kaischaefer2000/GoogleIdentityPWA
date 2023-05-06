@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 export default function AppPricesTable({ prices }: any) {
   return (
     <div
-      style={{ paddingLeft: "50px", paddingRight: "50px", marginTop: "20px" }}
+      style={{ marginTop: "20px" }}
     >
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label='simple table'>
@@ -38,6 +38,9 @@ export default function AppPricesTable({ prices }: any) {
           </TableBody>
         </Table>
       </TableContainer>
+      <div style={{paddingTop: '5px', fontSize: '11px'}}>
+        * If there are paid apps, search for the price in the app list with strg + f and verify the app
+      </div>
     </div>
   );
 }

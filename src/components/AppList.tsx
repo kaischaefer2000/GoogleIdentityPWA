@@ -64,7 +64,7 @@ function AppList() {
 
     const fetchData = async () => {
       const promises = formattedItems.map(async (obj, index) => {
-        if (index < 100) {
+        if (index < 0) {
           // if (cache.includes(obj.title)) {
           //   return {
           //     ...obj,
@@ -166,8 +166,8 @@ function AppList() {
 
   return (
     <div style={{ marginBottom: "50px" }}>
-      <div style={{ padding: "50px", background: "lightgrey" }}>
-        <h2>Upload the JSON file: 'Installs'</h2>
+      <div style={{ padding: "20px 30px", background: "lightgrey" }}>
+        <h2>Installed Apps on Google Play</h2>
         <p>
           <b>Path:</b> takeout-20230331T124008Z-001\\Takeout\Google Play Store\
           Installs.json
@@ -188,12 +188,11 @@ function AppList() {
         <>
           <div
             style={{
-              paddingLeft: "50px",
               paddingTop: "10px",
               paddingBottom: "10px",
             }}
           >
-            Anzahl Apps: {appList.length}
+            Total number of apps: <b>{appList.length}</b>
           </div>
           <AppPricesTable prices={prices} />
           <AppCategoriesTable categories={categories} />

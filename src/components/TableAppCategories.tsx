@@ -9,14 +9,14 @@ import Paper from "@mui/material/Paper";
 export default function AppCategoriesTable({ categories }: any) {
   return (
     <div
-      style={{ paddingLeft: "50px", paddingRight: "50px", marginTop: "20px" }}
+      style={{ marginTop: "20px" }}
     >
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label='simple table'>
           <TableHead>
             <TableRow>
               <TableCell>
-                <b>Categorie</b>
+                <b>Category</b>
               </TableCell>
               <TableCell align='right'>
                 <b>Count</b>
