@@ -6,7 +6,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-export default function TableApps({ apps }: any) {
+export default function AppCategoriesTable({ categories }: any) {
   return (
     <div
       style={{ paddingLeft: "50px", paddingRight: "50px", marginTop: "20px" }}
@@ -16,40 +16,27 @@ export default function TableApps({ apps }: any) {
           <TableHead>
             <TableRow>
               <TableCell>
-                <b>Name</b>
-              </TableCell>
-              <TableCell align='left'>
-                <b>Datum der Installation</b>
-              </TableCell>
-              <TableCell align='left'>
-                <b>Kategorie</b>
+                <b>Categorie</b>
               </TableCell>
               <TableCell align='right'>
-                <b>Preis</b>
+                <b>Count</b>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {apps.map((app: any, index: number) => (
+            {categories.map((categorie: any, index: number) => (
               <TableRow
                 key={index}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component='th' scope='row'>
-                  {app.title}
-                </TableCell>
-                <TableCell align='left'>{app.firstInstallationTime}</TableCell>
-                <TableCell align='left'>
-                  {app.category
+                  {categorie.category
                     .toLowerCase()
                     .split("_")
-                    .map(
-                      (word: string) =>
-                        word.charAt(0).toUpperCase() + word.slice(1)
-                    )
+                    .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
                     .join(" ")}
                 </TableCell>
-                <TableCell align='right'>{app.price}</TableCell>
+                <TableCell align='right'>{categorie.count}</TableCell>
               </TableRow>
             ))}
           </TableBody>
