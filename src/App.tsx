@@ -13,7 +13,10 @@ function App() {
   return (
     <div>
       <div style={{ margin: "30px" }}>
-        <Accordion style={{ backgroundColor: "#eaeaea" }}>
+        <Accordion
+          style={{ backgroundColor: "#eaeaea" }}
+          defaultExpanded={true}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls='panel1a-content'
@@ -25,7 +28,10 @@ function App() {
             <Maps />
           </AccordionDetails>
         </Accordion>
-        <Accordion style={{ backgroundColor: "#eaeaea" }}>
+        <Accordion
+          style={{ backgroundColor: "#eaeaea" }}
+          defaultExpanded={true}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls='panel2a-content'
@@ -37,7 +43,10 @@ function App() {
             <DeviceInfo />
           </AccordionDetails>
         </Accordion>
-        <Accordion style={{ backgroundColor: "#eaeaea" }}>
+        <Accordion
+          style={{ backgroundColor: "#eaeaea" }}
+          defaultExpanded={true}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls='panel3a-content'
