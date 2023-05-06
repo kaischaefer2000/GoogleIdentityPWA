@@ -64,7 +64,7 @@ function AppList() {
 
     const fetchData = async () => {
       const promises = formattedItems.map(async (obj, index) => {
-        if (index < 0) {
+        if (index < 15) {
           // if (cache.includes(obj.title)) {
           //   return {
           //     ...obj,
@@ -73,7 +73,7 @@ function AppList() {
           //   };
           // } else {
             const response = await axios.get(
-              `https://api.appbrain.com/v2/info/search?apikey=p26373.au94ao5768eamjb5t96da&query=${encodeURIComponent(
+              `https://api.appbrain.com/v2/info/search?apikey=p26374.gin5fchlk2brd5lsf86a5&query=${encodeURIComponent(
                 obj.title
               )}&format=json`
             );
