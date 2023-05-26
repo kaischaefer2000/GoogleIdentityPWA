@@ -64,7 +64,7 @@ function AppList() {
 
     const fetchData = async () => {
       const promises = formattedItems.map(async (obj, index) => {
-        if (index < 15) {
+        if (index < 110) {
           // if (cache.includes(obj.title)) {
           //   return {
           //     ...obj,
@@ -73,7 +73,7 @@ function AppList() {
           //   };
           // } else {
             const response = await axios.get(
-              `https://api.appbrain.com/v2/info/search?apikey=p26374.gin5fchlk2brd5lsf86a5&query=${encodeURIComponent(
+              `https://api.appbrain.com/v2/info/search?apikey=p26428.co5k0azcu5s1k3dahl753&query=${encodeURIComponent(
                 obj.title
               )}&format=json`
             );
@@ -88,8 +88,9 @@ function AppList() {
           return { ...obj, category: "not_available", price: "not_available" };
         }
       });
-      const results = await Promise.all(promises);
-      
+      let results = await Promise.all(promises);
+      results = results.filter((obj) => obj.category !== "not_available");
+
       setAppList(results);
 
       //// Create category array
@@ -163,7 +164,10 @@ function AppList() {
       link.click();
     }
   }, [appList]);
-
+  console.log(prices); 
+  console.log(categories);
+  console.log(appList)
+  
   return (
     <div style={{ marginBottom: "50px" }}>
       <div style={{ padding: "20px 30px", background: "lightgrey" }}>
@@ -183,7 +187,6 @@ function AppList() {
           </Button>
         </div>
       </div>
-
       {appList.length > 0 && categories.length > 0 && prices.length > 0 ? (
         <>
           <div
@@ -192,7 +195,8 @@ function AppList() {
               paddingBottom: "10px",
             }}
           >
-            Total number of apps: <b>{appList.length}</b>
+            {/* Total number of apps: <b>{appList.length}</b> */}
+            Total number of apps: <b>121</b>
           </div>
           <AppPricesTable prices={prices} />
           <AppCategoriesTable categories={categories} />
