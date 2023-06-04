@@ -73,7 +73,7 @@ function AppList() {
           //   };
           // } else {
             const response = await axios.get(
-              `https://api.appbrain.com/v2/info/search?apikey=p26428.co5k0azcu5s1k3dahl753&query=${encodeURIComponent(
+              `https://api.appbrain.com/v2/info/search?apikey=p26444.0lcz9xegey9qdiym2n57d&query=${encodeURIComponent(
                 obj.title
               )}&format=json`
             );
@@ -89,7 +89,6 @@ function AppList() {
         }
       });
       let results = await Promise.all(promises);
-      results = results.filter((obj) => obj.category !== "not_available");
 
       setAppList(results);
 
@@ -164,9 +163,6 @@ function AppList() {
       link.click();
     }
   }, [appList]);
-  console.log(prices); 
-  console.log(categories);
-  console.log(appList)
   
   return (
     <div style={{ marginBottom: "50px" }}>
@@ -187,6 +183,7 @@ function AppList() {
           </Button>
         </div>
       </div>
+
       {appList.length > 0 && categories.length > 0 && prices.length > 0 ? (
         <>
           <div
@@ -195,8 +192,7 @@ function AppList() {
               paddingBottom: "10px",
             }}
           >
-            {/* Total number of apps: <b>{appList.length}</b> */}
-            Total number of apps: <b>121</b>
+          Total number of apps: <b>{appList.length}</b>
           </div>
           <AppPricesTable prices={prices} />
           <AppCategoriesTable categories={categories} />
